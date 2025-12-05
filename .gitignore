@@ -1,0 +1,56 @@
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+
+# --- Xcode User Data ---
+*.xcuserdata/
+*/xcuserdata/
+*.mode1v3
+*.mode2v3
+*.perspectivev3
+*.outline
+*.pbuser
+
+# --- Xcode Build Artifacts ---
+# These are regenerated on every build. Never commit them.
+DerivedData/
+build/
+*.hmap
+*.ipa
+*.dSYM.zip
+*.dSYM
+
+# --- Xcode State & Recovery
+.xccheckout
+*.moved-aside
+
+# --- Swift Package Manager ---
+.build/
+.swiftpm/
+Packages/
+
+# --- CocoaPods ---
+# Ignore the actual source code of libraries
+Pods/
+# Note: Ensure to commit the Podfile and Podfile.lock files
+
+# --- Carthage ---
+Carthage/Build/
+
+# -- Fastlane ---
+fastlane/report.xml
+fastlane/screenshots/
+fastlane/test_output/
+
+# --- Test Results ---
+# Binary test results
+*.xcresult
+
+# --- Sensitive Information ---
+GoogleService-Info.plist
+*.apns
+*.p12
+.env
+Secrets.swift

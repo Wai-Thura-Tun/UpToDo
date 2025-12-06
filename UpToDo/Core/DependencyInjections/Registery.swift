@@ -6,3 +6,17 @@
 //
 
 import Foundation
+
+extension Resolver {
+    func registerDependencies() {
+        // MARK: - Register dependencies here
+        
+        // MARK: - Singletons
+        
+        self.register(SessionManager.self, lifecyle: .singleton) {
+            return SessionManagerImpl()
+        }
+        
+        // MARK: - Transients
+    }
+}

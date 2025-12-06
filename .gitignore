@@ -6,7 +6,7 @@
 
 # --- Xcode User Data ---
 *.xcuserdata/
-*/xcuserdata/
+xcuserdata/
 *.mode1v3
 *.mode2v3
 *.perspectivev3
@@ -22,7 +22,7 @@ build/
 *.dSYM.zip
 *.dSYM
 
-# --- Xcode State & Recovery
+# --- Xcode State & Recovery ---
 .xccheckout
 *.moved-aside
 
@@ -32,20 +32,18 @@ build/
 Packages/
 
 # --- CocoaPods ---
-# Ignore the actual source code of libraries
 Pods/
-# Note: Ensure to commit the Podfile and Podfile.lock files
+# Make sure to commit Podfile + Podfile.lock
 
 # --- Carthage ---
 Carthage/Build/
 
-# -- Fastlane ---
+# --- Fastlane ---
 fastlane/report.xml
 fastlane/screenshots/
 fastlane/test_output/
 
 # --- Test Results ---
-# Binary test results
 *.xcresult
 
 # --- Sensitive Information ---

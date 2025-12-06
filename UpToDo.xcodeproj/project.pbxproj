@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0634C0E92EE43E85006F34BF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0634C0E82EE43E85006F34BF /* FirebaseAnalytics */; };
+		0634C0EB2EE43E85006F34BF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0634C0EA2EE43E85006F34BF /* FirebaseAuth */; };
+		0634C0ED2EE43E85006F34BF /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0634C0EC2EE43E85006F34BF /* FirebaseCore */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		061CE1F82EE330BA005847DC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +71,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0634C0E92EE43E85006F34BF /* FirebaseAnalytics in Frameworks */,
+				0634C0ED2EE43E85006F34BF /* FirebaseCore in Frameworks */,
+				0634C0EB2EE43E85006F34BF /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +134,9 @@
 			);
 			name = UpToDo;
 			packageProductDependencies = (
+				0634C0E82EE43E85006F34BF /* FirebaseAnalytics */,
+				0634C0EA2EE43E85006F34BF /* FirebaseAuth */,
+				0634C0EC2EE43E85006F34BF /* FirebaseCore */,
 			);
 			productName = UpToDo;
 			productReference = 061CE1E12EE330BA005847DC /* UpToDo.app */;
@@ -208,6 +220,9 @@
 			);
 			mainGroup = 061CE1D82EE330BA005847DC;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				0634C0E72EE43E85006F34BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 061CE1E22EE330BA005847DC /* Products */;
 			projectDirPath = "";
@@ -300,7 +315,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waithuratun.UpToDo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waithuratun.uptodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -334,7 +349,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.waithuratun.UpToDo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.waithuratun.uptodo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -595,6 +610,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0634C0E72EE43E85006F34BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 12.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0634C0E82EE43E85006F34BF /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0634C0E72EE43E85006F34BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		0634C0EA2EE43E85006F34BF /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0634C0E72EE43E85006F34BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		0634C0EC2EE43E85006F34BF /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0634C0E72EE43E85006F34BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 061CE1D92EE330BA005847DC /* Project object */;
 }

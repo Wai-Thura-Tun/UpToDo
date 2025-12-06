@@ -6,4 +6,9 @@
 //
 
 import Foundation
+import FirebaseAuth
 
+protocol SessionManager {
+    var currentUser: User? { get }
+    var isLoggedIn: Bool { get }
+}

@@ -20,7 +20,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let navigationController: UINavigationController = UINavigationController()
-        coordinator = AppCoordinator(navigationController: navigationController)
+        let sessionManager: SessionManager = Resolver.shared.resolve(SessionManager.self)
+        coordinator = AppCoordinator(navigationController: navigationController, sessionManager: sessionManager)
         coordinator?.start()
         
         window = UIWindow(windowScene: windowScene)

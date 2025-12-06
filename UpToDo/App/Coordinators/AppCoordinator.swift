@@ -13,13 +13,24 @@ final class AppCoordinator: Coordinator {
     
     var childCoordinators: [any Coordinator] = []
     
-    init(navigationController: UINavigationController) {
+    private let sessionManager: SessionManager
+    
+    init(
+        navigationController: UINavigationController,
+        sessionManager: SessionManager
+    ) {
         self.navigationController = navigationController
+        self.sessionManager = sessionManager
     }
     
     func start() {
-        let onboardingVC: OnboardingVC = OnboardingVC.instantiate()
-        self.navigationController.pushViewController(onboardingVC, animated: true)
+        if sessionManager.isLoggedIn {
+            
+        }
+        else {
+            let onboardingVC: OnboardingVC = OnboardingVC.instantiate()
+            self.navigationController.pushViewController(onboardingVC, animated: true)
+        }
     }
     
 }

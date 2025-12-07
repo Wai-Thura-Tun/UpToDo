@@ -22,7 +22,7 @@ final class Resolver {
     
     func register<T>(
         _ type: T.Type,
-        lifecyle: Lifecyle,
+        lifecyle: Lifecyle = .transient,
         _ factory: @escaping () -> Any)
     {
         let identifier: String = String(describing: type.self)

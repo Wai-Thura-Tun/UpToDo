@@ -18,5 +18,8 @@ extension Resolver {
         }
         
         // MARK: - Transients
+        self.register(OnboardingVM.self) {
+            return OnboardingVM()
+        }
     }
 }

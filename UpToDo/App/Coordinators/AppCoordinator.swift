@@ -24,13 +24,26 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
+        
+        // Splash First
+        
+        let splashVC: SplashVC = .instantiate()
+        splashVC.coordinator = self
+        self.navigationController.pushViewController(splashVC, animated: true)
+    }
+    
+    func goToMain() {
         if sessionManager.isLoggedIn {
             
         }
         else {
-            let onboardingVC: OnboardingVC = OnboardingVC.instantiate()
-            self.navigationController.pushViewController(onboardingVC, animated: true)
+            let onboardingVC: OnboardingVC = .instantiate()
+            let vm: OnboardingVM = Resolver.shared.resolve(OnboardingVM.self)
+            onboardingVC.configure(with: vm)
+            
+            UIView.transition(with: self.navigationController.view, duration: 0.3, options: .transitionCrossDissolve) {
+                self.navigationController.setViewControllers([onboardingVC], animated: false)
+            }
         }
     }
-    
 }

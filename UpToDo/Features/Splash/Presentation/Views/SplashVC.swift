@@ -26,7 +26,7 @@ class SplashVC: UIViewController, Storyboarded {
     
     private func startCountDown() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.coordinator?.goToMain()
+            self?.coordinator?.didFinishSplash()
         }
     }
 }

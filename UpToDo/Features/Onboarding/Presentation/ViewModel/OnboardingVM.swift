@@ -9,6 +9,7 @@ import Foundation
 
 protocol OnboardingViewDelegate: AnyObject {
     func readyToUpdateSnapshot()
+    func onboardingFinished()
 }
 
 final class OnboardingVM {
@@ -19,5 +20,10 @@ final class OnboardingVM {
     func getData() {
         self.data = Onboarding.data
         self.delegate?.readyToUpdateSnapshot()
+    }
+    
+    func finishOnboarding() {
+        UserDefaults.standard.setOldUser()
+        self.delegate?.onboardingFinished()
     }
 }

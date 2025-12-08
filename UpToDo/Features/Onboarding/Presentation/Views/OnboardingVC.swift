@@ -32,11 +32,22 @@ class OnboardingVC: UIViewController, Storyboarded {
         setupBindings()
         self.vm.getData()
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        if let orthogonalScrollView = self.cvOnboarding.subviews.first as? UIScrollView {
+            orthogonalScrollView.isScrollEnabled = false
+        }
+    }
 
     private func setupViews() {
-        self.cvOnboarding.delegate = self
-        
         self.navigationController?.navigationBar.isHidden = false
+        
+        self.cvOnboarding.isScrollEnabled = false
+        self.cvOnboarding.showsVerticalScrollIndicator = false
+        self.cvOnboarding.showsHorizontalScrollIndicator = false
+        
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(
             title: "SKIP",
             style: .plain,
@@ -55,7 +66,6 @@ class OnboardingVC: UIViewController, Storyboarded {
         btnNext.titleLabel?.font = .popR16
         btnBack.titleLabel?.font = .popR16
         btnBack.tintColor = .systemGray
-        btnBack.isEnabled = false
     }
     
     private func setupBindings() {
@@ -63,9 +73,10 @@ class OnboardingVC: UIViewController, Storyboarded {
         self.btnNext.addTarget(self, action: #selector(onTapNext), for: .touchUpInside)
     }
     
-    func configure(with vm: OnboardingVM) {
+    func configure(with vm: OnboardingVM, coordinator: AppCoordinator?) {
         self.vm = vm
         self.vm.delegate = self
+        self.coordinator = coordinator
     }
     
     private func setupDataSource() {
@@ -96,8 +107,9 @@ class OnboardingVC: UIViewController, Storyboarded {
         section.orthogonalScrollingBehavior = .groupPaging
         
         section.visibleItemsInvalidationHandler = { [weak self] (visibleItems, offset, env) in
-            let currentPage: Int = Int(offset.x / (self?.cvOnboarding.frame.width ?? 1))
-            self?.pgcOnboarding.currentPage = currentPage
+            guard let self = self else { return }
+            let currentPage: Int = Int(offset.x / self.cvOnboarding.frame.width)
+            self.pgcOnboarding.currentPage = currentPage
         }
         
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -112,30 +124,50 @@ class OnboardingVC: UIViewController, Storyboarded {
     }
     
     @objc private func onTapSkip() {
-        
+        self.vm.finishOnboarding()
     }
     
     @objc private func onTapNext() {
-        let max: Int = self.vm.data.count - 1
-        let current: Int = self.pgcOnboarding.currentPage
-        if current < max {
-            
-        }
+        scrollToItem()
     }
     
     @objc private func onTapBack() {
+        scrollToItem(isGoingNext: false)
+    }
+    
+    private func scrollToItem(isGoingNext: Bool = true) {
+        let indexPaths = self.cvOnboarding.indexPathsForVisibleItems
+        let totalItems: Int = self.vm.data.count
         
+        if let currentIndexPath = indexPaths.first {
+            var nextItem: Int = currentIndexPath.item
+            
+            if isGoingNext {
+                if nextItem < totalItems - 1 {
+                    nextItem += 1
+                }
+                else {
+                    self.vm.finishOnboarding()
+                    return
+                }
+            }
+            else if !isGoingNext && nextItem > 0 {
+                nextItem -= 1
+            }
+            
+            let nextIndexPath = IndexPath(item: nextItem, section: currentIndexPath.section)
+            
+            self.cvOnboarding.scrollToItem(at: nextIndexPath, at: .centeredHorizontally, animated: true)
+        }
     }
 }
 
 extension OnboardingVC: OnboardingViewDelegate {
+    func onboardingFinished() {
+        self.coordinator?.didFinishOnboarding()
+    }
+    
     func readyToUpdateSnapshot() {
         self.updateSnapshot()
-    }
-}
-
-extension OnboardingVC: UICollectionViewDelegate, UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        print("did scroll")
     }
 }

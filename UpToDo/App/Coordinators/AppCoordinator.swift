@@ -78,6 +78,7 @@ final class AppCoordinator: Coordinator {
     
     func didFinishAuthFlow(_ coordinator: Coordinator) {
         removeChildCoordinators(coordinator)
+        self.navigationController.viewControllers = []
         showMainFlow()
     }
     
@@ -88,7 +89,6 @@ final class AppCoordinator: Coordinator {
     
     private func removeChildCoordinators(_ coordinator: Coordinator) {
         self.childCoordinators.remove(at: self.childCoordinators.firstIndex { $0 === coordinator } ?? 0)
-        self.navigationController.viewControllers = []
     }
     
     deinit {

@@ -14,7 +14,7 @@ final class AuthCoordinator: Coordinator {
     
     var navigationController: UINavigationController
     
-    var childCoordinators: [any Coordinator] = []
+    var childCoordinators: [Coordinator] = []
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController

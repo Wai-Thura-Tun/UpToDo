@@ -32,7 +32,7 @@ final class AppCoordinator: Coordinator {
             showMainFlow()
         }
         else {
-            if UserDefaults.standard.isOldUser {
+            if sessionManager.isOldUser {
                 showAuthFlow()
             }
             else {
@@ -42,12 +42,22 @@ final class AppCoordinator: Coordinator {
     }
     
     private func showSplash() {
+        if ProcessInfo.processInfo.arguments.contains("UITestSkipSplash") {
+            didFinishSplash()
+            return
+        }
+        
         let splashVC: SplashVC = .instantiate()
         splashVC.coordinator = self
         self.navigationController.pushViewController(splashVC, animated: true)
     }
     
     private func showOnboardingFlow() {
+        if ProcessInfo.processInfo.arguments.contains("UITestSkipOnboarding") {
+            didFinishOnboarding()
+            return
+        }
+        
         let onboardingVC: OnboardingVC = .instantiate()
         let vm: OnboardingVM = Resolver.shared.resolve(OnboardingVM.self)
         onboardingVC.configure(with: vm, coordinator: self)

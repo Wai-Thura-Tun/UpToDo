@@ -16,6 +16,11 @@ final class OnboardingVM {
     
     private(set) var data: [Onboarding] = []
     weak var delegate: OnboardingViewDelegate?
+    private let sessionManager: SessionManager
+    
+    init(sessionManager: SessionManager) {
+        self.sessionManager = sessionManager
+    }
     
     func getData() {
         self.data = Onboarding.data
@@ -23,7 +28,7 @@ final class OnboardingVM {
     }
     
     func finishOnboarding() {
-        UserDefaults.standard.setOldUser()
+        self.sessionManager.setOldUser()
         self.delegate?.onboardingFinished()
     }
 }

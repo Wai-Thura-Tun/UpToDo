@@ -73,7 +73,10 @@ class OnboardingVC: UIViewController, Storyboarded {
         self.btnNext.addTarget(self, action: #selector(onTapNext), for: .touchUpInside)
     }
     
-    func configure(with vm: OnboardingVM, coordinator: AppCoordinator?) {
+    func configure(
+        with vm: OnboardingVM,
+        coordinator: AppCoordinator? = nil
+    ) {
         self.vm = vm
         self.vm.delegate = self
         self.coordinator = coordinator
@@ -110,6 +113,7 @@ class OnboardingVC: UIViewController, Storyboarded {
             guard let self = self else { return }
             let currentPage: Int = Int(offset.x / self.cvOnboarding.frame.width)
             self.pgcOnboarding.currentPage = currentPage
+            self.btnNext.setTitle(self.vm.data[currentPage].btnLabel, for: .normal)
         }
         
         let layout = UICollectionViewCompositionalLayout(section: section)
@@ -154,6 +158,7 @@ class OnboardingVC: UIViewController, Storyboarded {
             else if !isGoingNext && nextItem > 0 {
                 nextItem -= 1
             }
+            
             
             let nextIndexPath = IndexPath(item: nextItem, section: currentIndexPath.section)
             

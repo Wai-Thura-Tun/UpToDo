@@ -19,7 +19,8 @@ extension Resolver {
         
         // MARK: - Transients
         self.register(OnboardingVM.self) {
-            return OnboardingVM()
+            let sessionManager: SessionManager = Resolver.shared.resolve(SessionManager.self)
+            return OnboardingVM(sessionManager: sessionManager)
         }
     }
 }

@@ -9,6 +9,8 @@ import Foundation
 import FirebaseAuth
 
 protocol SessionManager {
-    var currentUser: User? { get }
+    var currentUser: AppUser? { get }
     var isLoggedIn: Bool { get }
+    var isOldUser: Bool { get }
+    func setOldUser()
 }

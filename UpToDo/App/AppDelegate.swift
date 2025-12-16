@@ -7,7 +7,8 @@
 
 import UIKit
 import FirebaseCore
-
+import IQKeyboardToolbarManager
+import FirebaseAuth
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -15,12 +16,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        IQKeyboardToolbarManager.shared.isEnabled = true
         FirebaseApp.configure()
+        configureNavigationBarAppearance()
         
         if ProcessInfo.processInfo.arguments.contains("ResetUserDefault") {
             UserDefaults.standard.removeObject(forKey: "IsOldUser")
         }
         return true
+    }
+    
+    private func configureNavigationBarAppearance() {
+        let appearance = UINavigationBarAppearance()
+        appearance.largeTitleTextAttributes = [.font: UIFont.popB32]
+        appearance.titleTextAttributes = [.font: UIFont.popR16]
+        
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
     }
 
     // MARK: UISceneSession Lifecycle

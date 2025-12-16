@@ -21,7 +21,8 @@ final class HomeCoordinator: Coordinator {
     }
     
     func start() {
-        
+        let indexVC: IndexVC = .instantiate()
+        self.navigationController.pushViewController(indexVC, animated: true)
     }
     
     func showLogin() {

@@ -21,11 +21,17 @@ final class AuthCoordinator: Coordinator {
     }
     
     func start() {
-        let loginVC: LoginVC = .instantiate()
-        self.navigationController.pushViewController(loginVC, animated: true)
+        self.showLogin()
     }
     
     func showLogin() {
+        let loginVC: LoginVC = .instantiate()
+        let vm: LoginVM = Resolver.shared.resolve(LoginVM.self)
+        loginVC.configure(with: vm, coordinator: self)
+        self.navigationController.pushViewController(loginVC, animated: true)
+    }
+    
+    func showRegister() {
         
     }
 }

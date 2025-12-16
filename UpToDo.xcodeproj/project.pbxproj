@@ -13,6 +13,9 @@
 		0634C21C2EEC4D70006F34BF /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 0634C21B2EEC4D70006F34BF /* FirebaseAnalytics */; };
 		0634C21E2EEC4D70006F34BF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 0634C21D2EEC4D70006F34BF /* FirebaseAuth */; };
 		0634C2202EEC4D70006F34BF /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 0634C21F2EEC4D70006F34BF /* FirebaseCore */; };
+		0634C22C2EEDADD8006F34BF /* IQKeyboardToolbarManager in Frameworks */ = {isa = PBXBuildFile; productRef = 0634C22B2EEDADD8006F34BF /* IQKeyboardToolbarManager */; };
+		06FE154F2EEEA78500574B3D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 06FE154E2EEEA78500574B3D /* KeychainAccess */; };
+		06FE15682EEF07FD00574B3D /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 06FE15672EEF07FD00574B3D /* GoogleSignInSwift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,8 +78,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0634C0E92EE43E85006F34BF /* FirebaseAnalytics in Frameworks */,
+				0634C22C2EEDADD8006F34BF /* IQKeyboardToolbarManager in Frameworks */,
 				0634C0ED2EE43E85006F34BF /* FirebaseCore in Frameworks */,
+				06FE15682EEF07FD00574B3D /* GoogleSignInSwift in Frameworks */,
 				0634C0EB2EE43E85006F34BF /* FirebaseAuth in Frameworks */,
+				06FE154F2EEEA78500574B3D /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -151,6 +157,9 @@
 				0634C0E82EE43E85006F34BF /* FirebaseAnalytics */,
 				0634C0EA2EE43E85006F34BF /* FirebaseAuth */,
 				0634C0EC2EE43E85006F34BF /* FirebaseCore */,
+				0634C22B2EEDADD8006F34BF /* IQKeyboardToolbarManager */,
+				06FE154E2EEEA78500574B3D /* KeychainAccess */,
+				06FE15672EEF07FD00574B3D /* GoogleSignInSwift */,
 			);
 			productName = UpToDo;
 			productReference = 061CE1E12EE330BA005847DC /* UpToDo.app */;
@@ -213,7 +222,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 2610;
-				LastUpgradeCheck = 2610;
+				LastUpgradeCheck = 2620;
 				TargetAttributes = {
 					061CE1E02EE330BA005847DC = {
 						CreatedOnToolsVersion = 26.1.1;
@@ -239,6 +248,9 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				0634C0E72EE43E85006F34BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				0634C22A2EEDADD7006F34BF /* XCRemoteSwiftPackageReference "IQKeyboardToolbarManager" */,
+				06FE154D2EEEA78500574B3D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				06FE15662EEF07FD00574B3D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 061CE1E22EE330BA005847DC /* Products */;
@@ -319,6 +331,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UpToDo/UpToDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TBSLHJAF4T;
@@ -327,6 +340,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -353,6 +367,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = UpToDo/UpToDo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = TBSLHJAF4T;
@@ -361,6 +376,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -441,6 +457,7 @@
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -498,6 +515,7 @@
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -637,6 +655,30 @@
 				version = 12.6.0;
 			};
 		};
+		0634C22A2EEDADD7006F34BF /* XCRemoteSwiftPackageReference "IQKeyboardToolbarManager" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hackiftekhar/IQKeyboardToolbarManager.git";
+			requirement = {
+				kind = exactVersion;
+				version = 1.1.4;
+			};
+		};
+		06FE154D2EEEA78500574B3D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = exactVersion;
+				version = 4.2.2;
+			};
+		};
+		06FE15662EEF07FD00574B3D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
+			requirement = {
+				kind = exactVersion;
+				version = 9.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -669,6 +711,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 0634C0E72EE43E85006F34BF /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseCore;
+		};
+		0634C22B2EEDADD8006F34BF /* IQKeyboardToolbarManager */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0634C22A2EEDADD7006F34BF /* XCRemoteSwiftPackageReference "IQKeyboardToolbarManager" */;
+			productName = IQKeyboardToolbarManager;
+		};
+		06FE154E2EEEA78500574B3D /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 06FE154D2EEEA78500574B3D /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+		06FE15672EEF07FD00574B3D /* GoogleSignInSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 06FE15662EEF07FD00574B3D /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
+			productName = GoogleSignInSwift;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

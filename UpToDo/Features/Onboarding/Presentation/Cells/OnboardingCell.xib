@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="24412" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
-    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24405"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -21,19 +22,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="289" height="447"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Xbh-dC-8f3">
-                                <rect key="frame" x="0.0" y="0.0" width="289" height="231.33333333333334"/>
+                                <rect key="frame" x="0.0" y="0.0" width="289" height="231"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Xbh-dC-8f3" secondAttribute="height" multiplier="1:0.8" id="OWI-uh-ATu"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-lq-PzE">
-                                <rect key="frame" x="20" y="342.33333333333331" width="249" height="84.666666666666686"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label ghrpogahporg" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56H-zg-Jbk">
+                                <rect key="frame" x="20" y="251" width="249" height="20.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56H-zg-Jbk">
-                                <rect key="frame" x="20" y="291.33333333333331" width="249" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KqY-lq-PzE">
+                                <rect key="frame" x="20" y="291.5" width="249" height="150.5"/>
+                                <string key="text">garwgargarhwgrgrwaghrwagopr garpgorhegoparehgoaerpgraepogaerhgopraehgoparehgoprahgoparhgporawhgaoprwgharopwghaoprwghaprwohgpowarhgrwpoaghrwoapghwrpoahgawproghwaoprghrwapoghrwapoghwarpoghwproahgawoprhrw</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -41,11 +43,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="KqY-lq-PzE" firstAttribute="top" secondItem="56H-zg-Jbk" secondAttribute="bottom" constant="30" id="L8l-LG-bug"/>
+                            <constraint firstItem="KqY-lq-PzE" firstAttribute="top" secondItem="56H-zg-Jbk" secondAttribute="bottom" constant="20" id="L8l-LG-bug"/>
                             <constraint firstAttribute="trailing" secondItem="Xbh-dC-8f3" secondAttribute="trailing" id="N8j-57-rSf"/>
-                            <constraint firstItem="56H-zg-Jbk" firstAttribute="top" secondItem="Xbh-dC-8f3" secondAttribute="bottom" constant="60" id="Rwt-wi-HT3"/>
+                            <constraint firstItem="56H-zg-Jbk" firstAttribute="top" secondItem="Xbh-dC-8f3" secondAttribute="bottom" constant="20" id="Rwt-wi-HT3"/>
                             <constraint firstItem="Xbh-dC-8f3" firstAttribute="leading" secondItem="2wP-Te-cUR" secondAttribute="leading" id="T9j-KI-SQm"/>
-                            <constraint firstAttribute="bottom" secondItem="KqY-lq-PzE" secondAttribute="bottom" constant="20" id="Uee-XO-ecO"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="KqY-lq-PzE" secondAttribute="bottom" constant="5" id="Uee-XO-ecO"/>
                             <constraint firstItem="56H-zg-Jbk" firstAttribute="trailing" secondItem="KqY-lq-PzE" secondAttribute="trailing" id="UpO-Mm-j5U"/>
                             <constraint firstAttribute="trailing" secondItem="KqY-lq-PzE" secondAttribute="trailing" constant="20" id="V8t-hz-KCy"/>
                             <constraint firstItem="56H-zg-Jbk" firstAttribute="leading" secondItem="KqY-lq-PzE" secondAttribute="leading" id="gNw-lB-rvd"/>

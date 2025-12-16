@@ -48,6 +48,7 @@ fastlane/test_output/
 
 # --- Sensitive Information ---
 GoogleService-Info.plist
+Info.plist
 *.apns
 *.p12
 .env

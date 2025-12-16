@@ -35,5 +35,7 @@ class OnboardingCell: UICollectionViewCell {
     private func setUpViews() {
         self.lblTitle.font = .popB32
         self.lblSubtitle.font = .popR16
+        
+        [self.lblTitle, self.lblSubtitle].makeAdjustableFont()
     }
 }

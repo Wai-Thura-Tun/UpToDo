@@ -17,8 +17,10 @@ enum FontFamily: String {
     case bold = "Poppins-Bold"
     case extrabold = "Poppins-ExtraBold"
     
-    func of(size: CGFloat) -> UIFont {
-        return UIFont(name: self.rawValue, size: size) ?? UIFont.systemFont(ofSize: size)
+    func of(size: CGFloat, style: UIFont.TextStyle = .body) -> UIFont {
+        let customFont = UIFont(name: self.rawValue, size: size) ?? UIFont.systemFont(ofSize: size)
+        let fontMetrics = UIFontMetrics(forTextStyle: style)
+        return fontMetrics.scaledFont(for: customFont)
     }
 }
 
@@ -27,6 +29,7 @@ extension UIFont {
     
     // MARK: - Regular
     static var popR16: UIFont { FontFamily.regular.of(size: 16) }
+    static var popR13: UIFont { FontFamily.regular.of(size: 13) }
     
     // MARK: - Italic
     

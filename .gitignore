@@ -53,3 +53,4 @@ Info.plist
 *.p12
 .env
 Secrets.swift
+Secrets.xcconfig

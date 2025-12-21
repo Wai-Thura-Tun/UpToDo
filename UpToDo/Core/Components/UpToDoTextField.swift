@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 @IBDesignable
 final class UpToDoTextField: UITextField {
     

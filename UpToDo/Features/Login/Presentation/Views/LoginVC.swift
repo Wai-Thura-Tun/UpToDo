@@ -9,6 +9,7 @@ import UIKit
 import IQKeyboardCore
 import IQKeyboardToolbar
 
+@MainActor
 class LoginVC: UIViewController, Storyboarded, Alertable {
 
     @IBOutlet weak var lblEmail: UILabel!
@@ -39,7 +40,6 @@ class LoginVC: UIViewController, Storyboarded, Alertable {
     }
 
     private func setUpViews() {
-        self.viewActivityIndicator.hidesWhenStopped = true
         self.lblEmailError.isHidden = true
         self.lblPasswordError.isHidden = true
         [self.lblEmail, self.lblPassword].setFonts(.popR16)
@@ -72,7 +72,7 @@ class LoginVC: UIViewController, Storyboarded, Alertable {
     )
     {
         self.vm = vm
-        self.vm.delegate = self
+        self.vm.setDelegate(self)
         self.coordinator = coordinator
     }
     
@@ -119,9 +119,10 @@ class LoginVC: UIViewController, Storyboarded, Alertable {
 extension LoginVC: LoginViewDelegate {
     
     func onValidate(valiationErrors: [LoginVM.ValidationError]) {
+        self.startLoading()
         self.clearError()
+        
         if valiationErrors.isEmpty {
-            self.startLoading()
             self.vm.login()
         }
         else {
@@ -138,8 +139,7 @@ extension LoginVC: LoginViewDelegate {
     
     func onLoginSuccess() {
         self.stopLoading()
-        
-        print("Login success")
+        self.coordinator?.didFinishLogin()
     }
     
     func onFailed(message: String?, validationErrors: [String : String]?) {

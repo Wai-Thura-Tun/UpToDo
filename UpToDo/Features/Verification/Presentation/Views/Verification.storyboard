@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--VerificationVC-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="VerificationVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="VerificationVC" customModule="UpToDo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Rm-qZ-Ueh">
+                                <rect key="frame" x="20" y="193.33333333333334" width="353" height="465.66666666666663"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="envelope.badge.fill" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SbE-gO-yMQ">
+                                        <rect key="frame" x="101.66666666666667" y="-0.3333333333333286" width="151.33333333333331" height="148.66666666666663"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="150" id="26V-cn-6A3"/>
+                                            <constraint firstAttribute="height" constant="150" id="tPh-FQ-q7t"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Verify your email" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c4q-eo-2nR">
+                                        <rect key="frame" x="0.0" y="189.99999999999997" width="353" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We've sent an email to you. Continue account creation using the link via Email." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S82-dA-08W">
+                                        <rect key="frame" x="0.0" y="233.99999999999997" width="353" height="40.666666666666657"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Didn't receive the link?" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fNd-IF-IkS">
+                                        <rect key="frame" x="0.0" y="404.66666666666663" width="353" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiV-l6-kMa">
+                                        <rect key="frame" x="150.66666666666666" y="435.66666666666663" width="52" height="30"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Resend"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sUi-Iu-r3O">
+                                        <rect key="frame" x="0.0" y="314.66666666666663" width="353" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="ra9-uD-zqX"/>
+                                        </constraints>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="I've verified!"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="S82-dA-08W" firstAttribute="trailing" secondItem="c4q-eo-2nR" secondAttribute="trailing" id="Awf-EM-5p5"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hiV-l6-kMa" secondAttribute="trailing" constant="10" id="Blb-nz-3rk"/>
+                                    <constraint firstItem="hiV-l6-kMa" firstAttribute="centerX" secondItem="7Rm-qZ-Ueh" secondAttribute="centerX" id="IYX-Bk-mmA"/>
+                                    <constraint firstItem="S82-dA-08W" firstAttribute="top" secondItem="c4q-eo-2nR" secondAttribute="bottom" constant="20" id="MBi-e3-p5c"/>
+                                    <constraint firstItem="sUi-Iu-r3O" firstAttribute="leading" secondItem="7Rm-qZ-Ueh" secondAttribute="leading" id="OSd-Iv-OAG"/>
+                                    <constraint firstAttribute="trailing" secondItem="sUi-Iu-r3O" secondAttribute="trailing" id="PzC-IQ-rd6"/>
+                                    <constraint firstItem="hiV-l6-kMa" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="7Rm-qZ-Ueh" secondAttribute="leading" constant="10" id="QNg-Cg-K7P"/>
+                                    <constraint firstItem="fNd-IF-IkS" firstAttribute="top" secondItem="sUi-Iu-r3O" secondAttribute="bottom" constant="40" id="Qoy-dJ-hv3"/>
+                                    <constraint firstItem="c4q-eo-2nR" firstAttribute="top" secondItem="SbE-gO-yMQ" secondAttribute="bottom" constant="40" id="Quu-2C-lhp"/>
+                                    <constraint firstItem="S82-dA-08W" firstAttribute="leading" secondItem="7Rm-qZ-Ueh" secondAttribute="leading" id="Tcc-vL-2ky"/>
+                                    <constraint firstItem="fNd-IF-IkS" firstAttribute="leading" secondItem="S82-dA-08W" secondAttribute="leading" id="XSI-eV-0Cs"/>
+                                    <constraint firstAttribute="bottom" secondItem="hiV-l6-kMa" secondAttribute="bottom" id="Xta-X5-zGM"/>
+                                    <constraint firstItem="c4q-eo-2nR" firstAttribute="leading" secondItem="7Rm-qZ-Ueh" secondAttribute="leading" id="ee2-hm-c6R"/>
+                                    <constraint firstItem="hiV-l6-kMa" firstAttribute="top" secondItem="fNd-IF-IkS" secondAttribute="bottom" constant="10" id="fOI-tC-MIc"/>
+                                    <constraint firstItem="sUi-Iu-r3O" firstAttribute="top" secondItem="S82-dA-08W" secondAttribute="bottom" constant="40" id="jGN-yV-Oj5"/>
+                                    <constraint firstItem="SbE-gO-yMQ" firstAttribute="centerX" secondItem="7Rm-qZ-Ueh" secondAttribute="centerX" id="mIJ-eA-ZbS"/>
+                                    <constraint firstItem="fNd-IF-IkS" firstAttribute="trailing" secondItem="S82-dA-08W" secondAttribute="trailing" id="onK-kg-Nkc"/>
+                                    <constraint firstAttribute="trailing" secondItem="c4q-eo-2nR" secondAttribute="trailing" id="w8n-nV-6ZG"/>
+                                    <constraint firstItem="SbE-gO-yMQ" firstAttribute="top" secondItem="7Rm-qZ-Ueh" secondAttribute="top" id="z8J-09-LD3"/>
+                                </constraints>
+                            </view>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="WOy-lW-VLf">
+                                <rect key="frame" x="178" y="407.66666666666669" width="37" height="37"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="WOy-lW-VLf" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="2kv-3U-E5x"/>
+                            <constraint firstItem="7Rm-qZ-Ueh" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="NOI-NG-fI4"/>
+                            <constraint firstItem="WOy-lW-VLf" firstAttribute="centerX" secondItem="5EZ-qb-Rvc" secondAttribute="centerX" id="PJr-FU-9uQ"/>
+                            <constraint firstItem="7Rm-qZ-Ueh" firstAttribute="leading" secondItem="5EZ-qb-Rvc" secondAttribute="leading" constant="20" id="fjZ-z3-yuD"/>
+                            <constraint firstAttribute="trailing" secondItem="7Rm-qZ-Ueh" secondAttribute="trailing" constant="20" id="g7u-aU-JX9"/>
+                            <constraint firstItem="7Rm-qZ-Ueh" firstAttribute="centerY" secondItem="5EZ-qb-Rvc" secondAttribute="centerY" id="pZy-c1-kUJ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnResend" destination="hiV-l6-kMa" id="jh7-mb-Hz3"/>
+                        <outlet property="btnVerified" destination="sUi-Iu-r3O" id="qGw-NR-sNW"/>
+                        <outlet property="imgEmail" destination="SbE-gO-yMQ" id="FmK-Xf-lXw"/>
+                        <outlet property="lblDidNotReceive" destination="fNd-IF-IkS" id="Qci-0N-4yR"/>
+                        <outlet property="lblSentEmail" destination="S82-dA-08W" id="AML-ZI-jif"/>
+                        <outlet property="lblVerifyEmail" destination="c4q-eo-2nR" id="tXr-ll-b2n"/>
+                        <outlet property="viewActivityIndicator" destination="WOy-lW-VLf" id="eHj-jN-2ej"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.1679389312977" y="130.98591549295776"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="envelope.badge.fill" catalog="system" width="128" height="94"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

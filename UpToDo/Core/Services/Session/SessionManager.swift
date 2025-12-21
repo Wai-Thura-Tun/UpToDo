@@ -8,9 +8,17 @@
 import Foundation
 import FirebaseAuth
 
+enum AuthState {
+    case loggedOut
+    case unverified
+    case verified
+}
+
 protocol SessionManager {
     var currentUser: AppUser? { get }
-    var isLoggedIn: Bool { get }
+    var authState: AuthState { get }
     var isOldUser: Bool { get }
     func setOldUser()
+    func reload() async throws
 }
+

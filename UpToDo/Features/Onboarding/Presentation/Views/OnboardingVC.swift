@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 class OnboardingVC: UIViewController, Storyboarded {
 
     @IBOutlet weak var cvOnboarding: UICollectionView!
@@ -16,7 +17,7 @@ class OnboardingVC: UIViewController, Storyboarded {
     @IBOutlet weak var btnBack: UIButton!
     @IBOutlet weak var btnNext: UIButton!
     
-    weak var coordinator: AppCoordinator?
+    private weak var coordinator: AppCoordinator?
     
     private var vm: OnboardingVM!
     private var dataSource: UICollectionViewDiffableDataSource<Int, Onboarding>!
@@ -78,7 +79,7 @@ class OnboardingVC: UIViewController, Storyboarded {
         coordinator: AppCoordinator? = nil
     ) {
         self.vm = vm
-        self.vm.delegate = self
+        self.vm.setDelegate(self)
         self.coordinator = coordinator
     }
     

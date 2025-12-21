@@ -29,6 +29,7 @@ extension UIFont {
     
     // MARK: - Regular
     static var popR16: UIFont { FontFamily.regular.of(size: 16) }
+    static var popR14: UIFont { FontFamily.regular.of(size: 14) }
     static var popR13: UIFont { FontFamily.regular.of(size: 13) }
     
     // MARK: - Italic

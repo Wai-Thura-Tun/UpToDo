@@ -9,7 +9,7 @@ import Foundation
 
 final class LoginGoogleUseCaseImpl: LoginGoogleUseCase {
     
-    private let repository: AuthRepository
+    private let repository: AuthRepository!
     
     init(repository: AuthRepository) {
         self.repository = repository

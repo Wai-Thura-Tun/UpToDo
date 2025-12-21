@@ -40,7 +40,19 @@ final class AuthRepositoryImpl: AuthRepository {
     }
     
     func register(email: String, password: String) async throws {
-        
+        let result = try await auth.createUser(withEmail: email, password: password)
+        try await result.user.sendEmailVerification()
     }
     
+    func resendVerificationEmail() async throws {
+        try await auth.currentUser?.sendEmailVerification()
+    }
+    
+    func logout() throws {
+        try auth.signOut()
+    }
+    
+    func deleteUser() async throws {
+        try await auth.currentUser?.delete()
+    }
 }

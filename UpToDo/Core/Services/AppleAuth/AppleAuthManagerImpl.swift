@@ -10,6 +10,7 @@ import CryptoKit
 import UIKit
 import AuthenticationServices
 
+@MainActor
 final class AppleAuthManagerImpl: NSObject, AppleAuthManager {
     
     private var currentNonce: String?

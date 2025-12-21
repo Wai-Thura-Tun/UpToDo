@@ -10,6 +10,7 @@ import UIKit
 import GoogleSignIn
 import FirebaseCore
 
+@MainActor
 final class GoogleAuthManagerImpl: GoogleAuthManager {
     
     func signIn(in window: UIWindow) async throws -> (String?, String?) {

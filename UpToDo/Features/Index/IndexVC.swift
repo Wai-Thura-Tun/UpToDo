@@ -7,6 +7,7 @@
 
 import UIKit
 
+@MainActor
 class IndexVC: UIViewController, Storyboarded {
 
     override func viewDidLoad() {

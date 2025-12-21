@@ -16,6 +16,7 @@ protocol LoginViewDelegate: AnyObject {
     func onFailed(message: String?, validationErrors: [String: String]?)
 }
 
+@MainActor
 final class LoginVM {
     
     enum ValidationError {
@@ -26,7 +27,7 @@ final class LoginVM {
     private var email:String?
     private var password: String?
     
-    weak var delegate: LoginViewDelegate?
+    private weak var delegate: LoginViewDelegate?
     
     private let googleAuthManager: GoogleAuthManager!
     private let appleAuthManager: AppleAuthManager!
@@ -51,6 +52,10 @@ final class LoginVM {
         self.loginUseCase = loginUseCase
         self.loginAppleUseCase = loginAppleUseCase
         self.loginGoogleUseCase = loginGoogleUseCase
+    }
+    
+    func setDelegate(_ delegate: LoginViewDelegate) {
+        self.delegate = delegate
     }
     
     func setEmail(_ email: String?) {
@@ -112,6 +117,8 @@ final class LoginVM {
                 
                 let result = await self.loginGoogleUseCase.execute(idToken: idToken, accessToken: accessToken)
                 
+                guard !Task.isCancelled else { return }
+                
                 switch result {
                 case .success(_):
                     self.delegate?.onLoginSuccess()
@@ -152,7 +159,10 @@ final class LoginVM {
             
             do {
                 let appleResult = try await self.appleAuthManager.signIn(in: window)
+                
                 let response = await self.loginAppleUseCase.execute(result: appleResult)
+                guard !Task.isCancelled else { return }
+                
                 switch response {
                 case .success(_):
                     self.delegate?.onLoginSuccess()

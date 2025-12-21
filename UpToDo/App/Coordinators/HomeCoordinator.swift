@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 final class HomeCoordinator: Coordinator {
     
     weak var parent: AppCoordinator?

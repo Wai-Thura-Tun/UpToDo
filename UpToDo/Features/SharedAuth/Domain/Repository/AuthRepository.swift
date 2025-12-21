@@ -12,4 +12,7 @@ protocol AuthRepository {
     func loginWithApple(result: AppleSignInResult) async throws
     func loginWithGoogle(idToken: String, accessToken: String) async throws
     func register(email: String, password: String) async throws
+    func resendVerificationEmail() async throws
+    func logout() throws
+    func deleteUser() async throws
 }

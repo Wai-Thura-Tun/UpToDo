@@ -52,6 +52,26 @@ extension Resolver {
             return LoginAppleUseCaseImpl(repository: repository)
         }
         
+        self.register(RegisterUseCase.self) {
+            let repository: AuthRepository = Resolver.shared.resolve(AuthRepository.self)
+            return RegisterUseCaseImpl(repository: repository)
+        }
+        
+        self.register(ResendVerificationUseCase.self) {
+            let repository: AuthRepository = Resolver.shared.resolve(AuthRepository.self)
+            return ResendVerificationUseCaseImpl(repository: repository)
+        }
+        
+        self.register(LogoutUseCase.self) {
+            let repository: AuthRepository = Resolver.shared.resolve(AuthRepository.self)
+            return LogoutUseCaseImpl(repository: repository)
+        }
+        
+        self.register(DeleteUserUseCase.self) {
+            let repository: AuthRepository = Resolver.shared.resolve(AuthRepository.self)
+            return DeleteUserUseCaseImpl(repository: repository)
+        }
+        
         self.register(LoginVM.self) {
             let loginUseCase: LoginUseCase = Resolver.shared.resolve(LoginUseCase.self)
             let loginGoogleUseCase: LoginGoogleUseCase = Resolver.shared.resolve(LoginGoogleUseCase.self)
@@ -66,6 +86,35 @@ extension Resolver {
                 loginUseCase: loginUseCase,
                 loginAppleUseCase: loginAppleUseCase,
                 loginGoogleUseCase: loginGoogleUseCase
+            )
+        }
+        
+        self.register(RegisterVM.self) {
+            let registerUseCase: RegisterUseCase = Resolver.shared.resolve(RegisterUseCase.self)
+            let loginAppleUseCase: LoginAppleUseCase = Resolver.shared.resolve(LoginAppleUseCase.self)
+            let loginGoogleUseCase: LoginGoogleUseCase = Resolver.shared.resolve(LoginGoogleUseCase.self)
+            let appleAuthManager: AppleAuthManager = Resolver.shared.resolve(AppleAuthManager.self)
+            let googleAuthManager: GoogleAuthManager = Resolver.shared.resolve(GoogleAuthManager.self)
+            
+            return RegisterVM(
+                appleAuthManager: appleAuthManager,
+                googleAuthManager: googleAuthManager,
+                loginAppleUseCase: loginAppleUseCase,
+                loginGoogleUseCase: loginGoogleUseCase,
+                registerUseCase: registerUseCase
+            )
+        }
+        
+        self.register(VerificationVM.self) {
+            
+            let sessionManager: SessionManager = Resolver.shared.resolve(SessionManager.self)
+            let resendVerificationUseCase: ResendVerificationUseCase = Resolver.shared.resolve(ResendVerificationUseCase.self)
+            let deleteUserUseCase: DeleteUserUseCase = Resolver.shared.resolve(DeleteUserUseCase.self)
+            
+            return VerificationVM(
+                sessionManager: sessionManager,
+                resendVerificationUseCase: resendVerificationUseCase,
+                deleteUserUseCase: deleteUserUseCase
             )
         }
     }

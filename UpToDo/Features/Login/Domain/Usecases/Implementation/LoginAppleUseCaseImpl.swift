@@ -10,7 +10,7 @@ import Foundation
 final class LoginAppleUseCaseImpl: LoginAppleUseCase {
     private let repository: AuthRepository!
     
-    init(repository: AuthRepository!) {
+    init(repository: AuthRepository) {
         self.repository = repository
     }
     

@@ -11,7 +11,7 @@ class SplashVC: UIViewController, Storyboarded {
 
     @IBOutlet weak var lblTitle: UILabel!
     
-    weak var coordinator: AppCoordinator?
+    private weak var coordinator: AppCoordinator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,5 +28,9 @@ class SplashVC: UIViewController, Storyboarded {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
             self?.coordinator?.didFinishSplash()
         }
+    }
+    
+    func configure(coordinator: AppCoordinator) {
+        self.coordinator = coordinator
     }
 }

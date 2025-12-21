@@ -11,12 +11,21 @@ import FirebaseAuth
 final class SessionManagerImpl: SessionManager {
     var currentUser: AppUser? {
         guard let user = Auth.auth().currentUser else { return nil }
-        let appUser = AppUser(uid: user.uid, name: user.displayName, email: user.email)
+        let appUser = AppUser(
+            uid: user.uid,
+            name: user.displayName,
+            email: user.email,
+            isEmailVerified: user.isEmailVerified
+        )
         return appUser
     }
     
-    var isLoggedIn: Bool {
-        return currentUser != nil
+    var authState: AuthState {
+        guard let user = Auth.auth().currentUser else { return .loggedOut }
+        if user.isEmailVerified {
+            return .verified
+        }
+        return .unverified
     }
     
     var isOldUser: Bool {
@@ -25,5 +34,10 @@ final class SessionManagerImpl: SessionManager {
     
     func setOldUser() {
         UserDefaults.standard.set(true, forKey: "IsOldUser")
+    }
+    
+    func reload() async throws {
+        guard let user = Auth.auth().currentUser else { return }
+        try await user.reload()
     }
 }

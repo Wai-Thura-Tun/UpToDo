@@ -1,13 +1,13 @@
 //
-//  LoginUseCaseImpl.swift
+//  RegisterUseCaseImpl.swift
 //  UpToDo
 //
-//  Created by Wai Thura Tun on 14/12/2568 BE.
+//  Created by Wai Thura Tun on 17/12/2568 BE.
 //
 
 import Foundation
 
-final class LoginUseCaseImpl: LoginUseCase {
+final class RegisterUseCaseImpl: RegisterUseCase {
     
     private let repository: AuthRepository!
     
@@ -21,19 +21,19 @@ final class LoginUseCaseImpl: LoginUseCase {
         }
         
         guard email.isEmail else {
-            return .failure(.validationFailed(["email": "Email is not valid"]))
+            return .failure(.validationFailed(["email": "Your email is not valid"]))
         }
         
-        guard let password = password else {
-            return .failure(.validationFailed(["password": "Password is required"]))
+        guard let _ = password else {
+            return .failure(.validationFailed(["password" : "Password is required"]))
         }
         
         do {
-            try await repository.login(email: email, password: password)
+            try await self.repository.register(email: email, password: email)
             return .success(())
         }
         catch {
-            return .failure(.unknown("Login Failed"))
+            return .failure(.unknown("Something went wrong"))
         }
     }
 }

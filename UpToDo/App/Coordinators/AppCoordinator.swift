@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+@MainActor
 final class AppCoordinator: Coordinator {
     var navigationController: UINavigationController
     
@@ -27,34 +28,52 @@ final class AppCoordinator: Coordinator {
         showSplash()
     }
     
-    private func checkSession() {
-        if sessionManager.isLoggedIn {
-            showMainFlow()
+    // MARK: Routing
+    
+    func route() {
+        self.navigationController.viewControllers = []
+        
+        Task { [weak self] in
+            try? await self?.sessionManager.reload()
         }
-        else {
-            if sessionManager.isOldUser {
-                showAuthFlow()
-            }
-            else {
-                showOnboardingFlow()
-            }
+        
+        if !sessionManager.isOldUser {
+            self.startOnboardingFlow()
+            return
+        }
+        
+        switch sessionManager.authState {
+        case .loggedOut:
+            self.startAuthFlow(entry: .login)
+        case .unverified:
+            self.startAuthFlow(entry: .verification)
+        case .verified:
+            self.startMainFlow()
         }
     }
     
+    
+    // MARK: - Splash
     private func showSplash() {
         if ProcessInfo.processInfo.arguments.contains("UITestSkipSplash") {
-            didFinishSplash()
+            self.didFinishSplash()
             return
         }
         
         let splashVC: SplashVC = .instantiate()
-        splashVC.coordinator = self
-        self.navigationController.pushViewController(splashVC, animated: true)
+        splashVC.configure(coordinator: self)
+        self.navigationController.setViewControllers([splashVC], animated: true)
     }
     
-    private func showOnboardingFlow() {
+    func didFinishSplash() {
+        self.route()
+    }
+    
+    // MARK: - Onboarding
+    
+    private func startOnboardingFlow() {
         if ProcessInfo.processInfo.arguments.contains("UITestSkipOnboarding") {
-            didFinishOnboarding()
+            self.didFinishOnboarding()
             return
         }
         
@@ -67,41 +86,41 @@ final class AppCoordinator: Coordinator {
         }
     }
     
-    private func showAuthFlow() {
-        let authCoordinator: AuthCoordinator = .init(navigationController: self.navigationController)
-        self.childCoordinators.append(authCoordinator)
-        authCoordinator.parent = self
-        authCoordinator.start()
-    }
-    
-    private func showMainFlow() {
-        let homeCoordinator: HomeCoordinator = .init(navigationController: self.navigationController)
-        self.childCoordinators.append(homeCoordinator)
-        homeCoordinator.parent = self
-        homeCoordinator.start()
-    }
-    
     func didFinishOnboarding() {
         self.navigationController.viewControllers = []
-        showAuthFlow()
+        self.startAuthFlow(entry: .login)
+    }
+    
+    // MARK: - Auth
+    
+    private func startAuthFlow(entry: AuthEntryState) {
+        let authCoordinator: AuthCoordinator = .init(
+            navigationController: self.navigationController,
+            state: entry
+        )
+        authCoordinator.parent = self
+        self.childCoordinators.append(authCoordinator)
+        authCoordinator.start()
     }
     
     func didFinishAuthFlow(_ coordinator: Coordinator) {
         removeChildCoordinators(coordinator)
-        self.navigationController.viewControllers = []
-        showMainFlow()
+        self.route()
     }
     
-    func didFinishSplash() {
-        self.navigationController.viewControllers = []
-        checkSession()
+    // MARK: - Home
+    
+    private func startMainFlow() {
+        let homeCoordinator: HomeCoordinator = .init(
+            navigationController: self.navigationController
+        )
+        homeCoordinator.parent = self
+        self.childCoordinators.append(homeCoordinator)
+        homeCoordinator.start()
     }
+    
     
     private func removeChildCoordinators(_ coordinator: Coordinator) {
-        self.childCoordinators.remove(at: self.childCoordinators.firstIndex { $0 === coordinator } ?? 0)
-    }
-    
-    deinit {
-        self.childCoordinators = []
+        self.childCoordinators.removeAll { $0 === coordinator }
     }
 }
